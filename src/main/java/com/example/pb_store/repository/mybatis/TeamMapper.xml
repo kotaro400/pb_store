@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.pb_store.repository.mybatis.TeamMapper">
+    <resultMap id="Team" type="com.example.pb_store.domain.Team">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="individuals" ofType="com.example.pb_store.domain.Individual">
+            <id property="id" column="individual_id"/>
+            <result property="species_id" column="individual_species_id"/>
+        </collection>
+    </resultMap>
+
+    <select id="get" resultMap="Team">
+        SELECT
+        teams.id as id,
+        teams.name as name,
+        individuals.id as individual_id,
+        individuals.species_id as individual_species_id
+        FROM teams LEFT OUTER JOIN individuals ON teams.id = individuals.team_id
+    </select>
+</mapper>
