@@ -21,6 +21,15 @@ public class TeamRepositoryImpl implements TeamRepository {
     }
 
     @Override
+    public Team get(int id) {
+        Team team = this.sqlSessionTemplate.getMapper(TeamMapper.class).get(id);
+        if (team == null) {
+            throw new RuntimeException("not found");
+        }
+        return team;
+    }
+
+    @Override
     public Team insert(Team team) {
         this.sqlSessionTemplate.getMapper(TeamMapper.class).insert(team);
         team.getIndividuals().stream().forEach(individual -> individual.setTeamId(team.getId()));

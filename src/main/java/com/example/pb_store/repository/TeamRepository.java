@@ -5,5 +5,6 @@ import java.util.List;
 
 public interface TeamRepository {
     List<Team> getList();
+    Team get(int id);
     Team insert(Team team);
 }

@@ -22,6 +22,17 @@
         individuals.team_id as individual_team_id
         FROM teams LEFT OUTER JOIN individuals ON teams.id = individuals.team_id
     </select>
+
+    <select id="get" resultMap="TeamResult">
+        SELECT
+        teams.id as id,
+        teams.name as name,
+        individuals.id as individual_id,
+        individuals.species_id as individual_species_id,
+        individuals.team_id as individual_team_id
+        FROM teams INNER JOIN individuals ON teams.id = individuals.team_id
+        WHERE teams.id = #{id}
+    </select>
     
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO teams (name) VALUES (#{name})

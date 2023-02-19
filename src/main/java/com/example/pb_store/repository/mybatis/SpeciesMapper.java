@@ -5,5 +5,5 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface SpeciesMapper {
-    List<Species> find(@Param("name") String name);
+    List<Species> find(String name);
 }

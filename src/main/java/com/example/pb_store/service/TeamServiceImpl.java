@@ -14,9 +14,15 @@ public class TeamServiceImpl implements TeamService{
         this.repository = repository;
     }
 
+
     @Override
     public List<Team> getList() {
         return this.repository.getList();
+    }
+
+    @Override
+    public Team get(int id) {
+        return this.repository.get(id);
     }
 
     @Override
