@@ -4,5 +4,6 @@ import com.example.pb_store.domain.Team;
 import java.util.List;
 
 public interface TeamService {
-    List<Team> get();
+    List<Team> getList();
+    Team add(Team team);
 }

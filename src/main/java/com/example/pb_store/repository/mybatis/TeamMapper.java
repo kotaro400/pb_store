@@ -4,5 +4,6 @@ import com.example.pb_store.domain.Team;
 import java.util.List;
 
 public interface TeamMapper {
-    List<Team> get();
+    List<Team> getAll();
+    int insert(Team team);
 }

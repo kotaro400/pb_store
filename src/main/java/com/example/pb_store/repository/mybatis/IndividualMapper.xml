@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.pb_store.repository.mybatis.IndividualMapper">
+    <insert id="bulkInsert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO individuals (species_id, team_id)
+        VALUES
+        <foreach collection="individualList" item="individual" separator=",">
+            (
+                #{individual.speciesId},
+                #{individual.teamId}
+            )
+        </foreach>
+    </insert>
+</mapper>

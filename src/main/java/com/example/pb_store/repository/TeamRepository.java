@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface TeamRepository {
     List<Team> getList();
+    Team insert(Team team);
 }

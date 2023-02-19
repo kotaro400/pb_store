@@ -7,12 +7,6 @@ public class Team {
     private String name;
     private List<Individual> individuals;
 
-    public Team(int id, String name, List<Individual> individuals){
-        this.id = id;
-        this.name = name;
-        this.individuals = individuals;
-    }
-
     public void setId(int id) {
         this.id = id;
     }

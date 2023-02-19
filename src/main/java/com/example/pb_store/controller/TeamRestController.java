@@ -4,6 +4,8 @@ import com.example.pb_store.domain.Team;
 import com.example.pb_store.service.TeamService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +19,12 @@ public class TeamRestController {
     }
 
     @GetMapping(path = "", produces = "application/json")
-    public List<Team> get() {
-        return this.service.get();
+    public List<Team> getList() {
+        return this.service.getList();
+    }
+
+    @PostMapping(path = "", produces = "application/json")
+    public Team add(@RequestBody Team team){
+        return this.service.add(team);
     }
 }

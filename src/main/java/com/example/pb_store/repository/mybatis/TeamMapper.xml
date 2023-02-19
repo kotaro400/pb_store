@@ -3,21 +3,27 @@
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.pb_store.repository.mybatis.TeamMapper">
-    <resultMap id="Team" type="com.example.pb_store.domain.Team">
+    <resultMap id="TeamResult" type="com.example.pb_store.domain.Team">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <collection property="individuals" ofType="com.example.pb_store.domain.Individual">
             <id property="id" column="individual_id"/>
-            <result property="species_id" column="individual_species_id"/>
+            <result property="speciesId" column="individual_species_id"/>
+            <result property="teamId" column="individual_team_id"/>
         </collection>
     </resultMap>
 
-    <select id="get" resultMap="Team">
+    <select id="getAll" resultMap="TeamResult">
         SELECT
         teams.id as id,
         teams.name as name,
         individuals.id as individual_id,
-        individuals.species_id as individual_species_id
+        individuals.species_id as individual_species_id,
+        individuals.team_id as individual_team_id
         FROM teams LEFT OUTER JOIN individuals ON teams.id = individuals.team_id
     </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO teams (name) VALUES (#{name})
+    </insert>
 </mapper>
