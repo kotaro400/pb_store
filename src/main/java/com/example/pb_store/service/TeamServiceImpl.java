@@ -14,14 +14,13 @@ public class TeamServiceImpl implements TeamService{
         this.repository = repository;
     }
 
-
     @Override
     public List<Team> getList() {
         return this.repository.getList();
     }
 
     @Override
-    public Team get(int id) {
+    public Team get(Integer id) {
         return this.repository.get(id);
     }
 
@@ -29,5 +28,18 @@ public class TeamServiceImpl implements TeamService{
     @Transactional(rollbackFor = Throwable.class)
     public Team add(Team team) {
         return this.repository.insert(team);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public Team update(Team team) {
+        this.repository.lock(team.getId());
+        return this.repository.update(team);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public void delete(Integer id) {
+        this.repository.delete(id);
     }
 }

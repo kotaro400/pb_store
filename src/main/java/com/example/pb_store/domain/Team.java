@@ -3,11 +3,11 @@ package com.example.pb_store.domain;
 import java.util.List;
 
 public class Team {
-    private int id;
+    private Integer id;
     private String name;
     private List<Individual> individuals;
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -19,7 +19,7 @@ public class Team {
         this.individuals = individuals;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

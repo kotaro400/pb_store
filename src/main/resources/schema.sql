@@ -9,10 +9,10 @@ CREATE TABLE teams(
 
 CREATE TABLE individuals(
     id INT AUTO_INCREMENT,
-    species_id INT NOT NULL,
+    species_id INT,
     team_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (team_id) REFERENCES teams(id)
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS species(

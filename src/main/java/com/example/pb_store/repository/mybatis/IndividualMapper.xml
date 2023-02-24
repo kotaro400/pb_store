@@ -13,4 +13,13 @@
             )
         </foreach>
     </insert>
+
+    <update id="update" parameterType="com.example.pb_store.domain.Individual">
+        UPDATE individuals
+        <set>
+        <!--個体のteam間移動はないのteam_idの変更はなし-->
+            species_id = #{speciesId}
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>

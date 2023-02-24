@@ -37,4 +37,29 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO teams (name) VALUES (#{name})
     </insert>
+
+    <select id="lock" resultMap="TeamResult">
+        SELECT
+        teams.id as id,
+        teams.name as name,
+        individuals.id as individual_id,
+        individuals.species_id as individual_species_id,
+        individuals.team_id as individual_team_id
+        FROM teams INNER JOIN individuals ON teams.id = individuals.team_id
+        WHERE teams.id = #{id}
+        FOR UPDATE
+    </select>
+    
+    <update id="update" parameterType="com.example.pb_store.domain.Team">
+        UPDATE teams
+        <set>
+            name = #{name}
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="com.example.pb_store.domain.Team">
+        DELETE FROM teams
+        WHERE id = #{id}
+    </delete>
 </mapper>

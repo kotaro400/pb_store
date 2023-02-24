@@ -1,31 +1,31 @@
 package com.example.pb_store.domain;
 
 public class Individual {
-    private int id;
-    private int speciesId;
-    private int teamId;
+    private Integer id;
+    private Integer speciesId;
+    private Integer teamId;
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setSpeciesId(int speciesId) {
+    public void setSpeciesId(Integer speciesId) {
         this.speciesId = speciesId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         this.teamId = teamId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getSpeciesId() {
+    public Integer getSpeciesId() {
         return speciesId;
     }
 
-    public int getTeamId() {
+    public Integer getTeamId() {
         return teamId;
     }
 }
