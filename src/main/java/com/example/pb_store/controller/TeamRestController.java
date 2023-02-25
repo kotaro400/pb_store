@@ -3,6 +3,7 @@ package com.example.pb_store.controller;
 import com.example.pb_store.domain.Team;
 import com.example.pb_store.service.TeamService;
 import java.util.List;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -32,12 +33,12 @@ public class TeamRestController {
     }
 
     @PostMapping(path = "", produces = "application/json")
-    public Team add(@RequestBody Team team){
+    public Team add(@Validated @RequestBody Team team){
         return this.service.add(team);
     }
 
     @PatchMapping(path = "/{id}", produces = "application/json")
-    public Team update(@PathVariable Integer id, @RequestBody Team team){
+    public Team update(@PathVariable Integer id, @Validated @RequestBody Team team){
         team.setId(id);
         return this.service.update(team);
     }
